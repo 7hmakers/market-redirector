@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>跳转</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <style>
+      .outer {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .item {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 10px;
+        font-size: xx-large;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner">
+        <div class="item">
+          <a href="./schedule">
+            卡贴
+          </a>
+        </div>
+        <div class="item">
+          <a href="./sticker">
+            课程表
+          </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const key = urlParams.get('key');
+      if (key) {
+        if (key[0] === 'A') {
+          window.location.href = './sticker?key=' + key;
+        } else if (key[0] === 'B') {
+          window.location.href = './schedule?key=' + key;
+        }
+      }
+    </script>
+  </body>
+</html>
