@@ -24,7 +24,22 @@
   </head>
   <body>
     <div class="outer">
-      <div class="inner">
+      <div class="inner" id="inner">
+        跳转中，请稍等...
+      </div>
+    </div>
+    <script>
+      const innerEl = document.getElementById('inner');
+      const urlParams = new URLSearchParams(window.location.search);
+      const key = urlParams.get('key');
+      if (key) {
+        if (key[0] === 'A') {
+          window.location.href = './sticker?key=' + key;
+        } else if (key[0] === 'B') {
+          window.location.href = './schedule?key=' + key;
+        }
+      } else {
+        innerEl.innerHTML = `
         <div class="item">
           <a href="./schedule">
             卡贴
@@ -35,17 +50,7 @@
             课程表
           </a>
         </div>
-      </div>
-    </div>
-    <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      const key = urlParams.get('key');
-      if (key) {
-        if (key[0] === 'A') {
-          window.location.href = './sticker?key=' + key;
-        } else if (key[0] === 'B') {
-          window.location.href = './schedule?key=' + key;
-        }
+        `
       }
     </script>
   </body>
